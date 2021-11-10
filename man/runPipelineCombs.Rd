@@ -4,14 +4,37 @@
 \alias{runPipelineCombs}
 \title{runPipelineCombs}
 \usage{
-runPipelineCombs(sce, filt, norm, resolution)
+runPipelineCombs(
+  sce,
+  doubletmethod = c("none"),
+  filt = c("default"),
+  norm = c("norm.seurat"),
+  sel = c("sel.vst"),
+  selnb = 2000,
+  dr = c("seurat.pca"),
+  clustmethod = c("clust.seurat"),
+  dims = c(10),
+  resolution = c(0.1, 0.2)
+)
 }
 \arguments{
 \item{sce}{SingleCellExperiment object with counts matrix and phenoid colData entry.}
 
+\item{doubletmethod}{list of doublet detection methods}
+
 \item{filt}{list of filtering methods}
 
 \item{norm}{list of normalization methods}
+
+\item{sel}{list of selection methods}
+
+\item{selnb}{list of number of genes to select}
+
+\item{dr}{list of dimensionality reduction methods}
+
+\item{clustmethod}{list of clustering methods}
+
+\item{dims}{list of dimensions for dimensionality reduction}
 
 \item{resolution}{list of clustering resolutions}
 }

@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+^E-GEOD-36552
+.DS_Store
