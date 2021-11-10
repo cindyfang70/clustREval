@@ -40,7 +40,7 @@ The package tree structure is provided below (optional).
 
 The contributor for this package is Xin Zhi Fang.
 
-## Referenceserate
+## References
 
 1.  Germain, P. L., Sonrel, A., & Robinson, M. D. (2020). pipeComp, a
     general framework for the evaluation of computational pipelines,
