@@ -7,7 +7,7 @@
 runPipelineCombs(
   sce,
   doubletmethod = c("none"),
-  filt = c("default"),
+  filt = c("filt.default"),
   norm = c("norm.seurat"),
   sel = c("sel.vst"),
   selnb = 2000,
