@@ -47,7 +47,7 @@ The package tree structure is provided below (optional).
 The contributor for this package is Xin Zhi Fang.
 
 
-## References
+## Referenceserate 
 1. Germain, P. L., Sonrel, A., & Robinson, M. D. (2020). pipeComp, a general framework for the evaluation of computational pipelines, reveals performant single cell RNA-seq preprocessing tools. Genome Biology, 21(1). https://doi.org/10.1186/s13059-020-02136-7
 
 2. Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology, 15(12). https://doi.org/10.1186/s13059-014-0550-8
