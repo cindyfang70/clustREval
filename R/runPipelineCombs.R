@@ -7,6 +7,7 @@ library(labelled)
 #'Run user-defined clustering pipeline combinations on a user-specificed scRNA-seq dataset.
 #'
 #' @param sce SingleCellExperiment object with counts matrix and phenoid colData entry.
+#' @param outputPrefix String indicating the prefix of the filepath that results should save to
 #' @param filt list of filtering methods
 #' @param norm list of normalization methods
 #' @param resolution list of clustering resolutions
@@ -75,6 +76,6 @@ runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none")
   
   print(clustersPath)
   clustRes <- readRDS(clustersPath)
-  clustRes <- lapply(clustRes, remove_attributes, attributes="true.labels")
+  clustRes <- lapply(clustRes, labelled::remove_attributes, attributes="true.labels")
   return(clustRes)
 }

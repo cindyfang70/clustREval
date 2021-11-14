@@ -6,6 +6,7 @@
 \usage{
 runPipelineCombs(
   sce,
+  outputPrefix = "sce",
   doubletmethod = c("none"),
   filt = c("filt.default"),
   norm = c("norm.seurat"),
@@ -19,6 +20,8 @@ runPipelineCombs(
 }
 \arguments{
 \item{sce}{SingleCellExperiment object with counts matrix and phenoid colData entry.}
+
+\item{outputPrefix}{String indicating the prefix of the filepath that results should save to}
 
 \item{doubletmethod}{list of doublet detection methods}
 

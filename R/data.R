@@ -6,3 +6,11 @@
 #' @format A data frame with 26073 rows and 124 columns:
 #' @source \url{https://www.ebi.ac.uk/gxa/sc/experiments/E-GEOD-36552/results/tsne}
 "embryo"
+
+#' Embryo data clustering results from two pipelines.
+#' 
+#'
+# Clustering results of the embryo scRNA-seq data from two pipelines.
+#' @format A list wi
+#' th two levels
+"embryoClusts"
