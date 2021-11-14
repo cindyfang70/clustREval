@@ -14,7 +14,12 @@ Imports:
   SingleCellExperiment,
   pipeComp,
   scuttle,
-  labelled
+  labelled,
+  scran,
+  fgsea,
+  org.Hs.eg.db, 
+  AnnotationDbi,
+  tidyverse
 Depends: 
     R (>= 2.10)
 LazyData: true
