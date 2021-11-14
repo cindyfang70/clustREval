@@ -1,6 +1,6 @@
 library(pipeComp)
 library(scuttle)
-
+library(labelled)
 
 #' runPipelineCombs
 #'
@@ -20,7 +20,7 @@ library(scuttle)
 #' @return end outputs object
 #' @export
 
-runPipelineCombs <- function(sce, doubletmethod =c("none"), filt=c("filt.default"), norm=c("norm.seurat"), sel=c("sel.vst"), selnb=2000, dr=c("seurat.pca"), clustmethod=c("clust.seurat"), dims=c(10), resolution=c(0.1, 0.2)){
+runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none"), filt=c("filt.default"), norm=c("norm.seurat"), sel=c("sel.vst"), selnb=2000, dr=c("seurat.pca"), clustmethod=c("clust.seurat"), dims=c(10), resolution=c(0.1, 0.2)){
   alternatives <- list(
     doubletmethod=doubletmethod,
     filt=filt,
@@ -36,6 +36,7 @@ runPipelineCombs <- function(sce, doubletmethod =c("none"), filt=c("filt.default
   
   sce <- scuttle::addPerCellQC(sce)
   sce <- scuttle::addPerFeatureQC(sce)
+  # Throws a note since it's sourced from an external file, maybe copy/paste the function into this file?
   sce <- add_meta(sce)
 
   pct_counts_in_top_50_features <- sce$pct_counts_top_50_features
@@ -68,5 +69,12 @@ runPipelineCombs <- function(sce, doubletmethod =c("none"), filt=c("filt.default
   pip_def@aggregation$dimreduction <- evalDummy
   pip_def@aggregation$clustering <- evalDummy
   
-  res <- pipeComp::runPipeline(sce, alternatives, pip_def, nthreads=1, debug=TRUE)
+  outputPrefix <- paste("data", outputPrefix, sep="/")
+  res <- pipeComp::runPipeline(sce, output.prefix = outputPrefix, alternatives, pip_def, nthreads=1, debug=TRUE)
+  clustersPath <- paste0(outputPrefix, "res.sce.endOutputs.rds")
+  
+  print(clustersPath)
+  clustRes <- readRDS(clustersPath)
+  clustRes <- lapply(clustRes, remove_attributes, attributes="true.labels")
+  return(clustRes)
 }
