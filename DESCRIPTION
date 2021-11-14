@@ -19,7 +19,8 @@ Imports:
   fgsea,
   org.Hs.eg.db, 
   AnnotationDbi,
-  tidyverse
+  tidyverse,
+  clValid
 Depends: 
     R (>= 2.10)
 LazyData: true

@@ -2,7 +2,7 @@
 % Please edit documentation in R/geneSetEval.R
 \name{geneSetEval}
 \alias{geneSetEval}
-\title{Title}
+\title{geneSetEval}
 \usage{
 geneSetEval(sce, clusters)
 }
@@ -15,5 +15,5 @@ geneSetEval(sce, clusters)
 Mean enrichment score for genes in each cluster
 }
 \description{
-Title
+geneSetEval
 }
