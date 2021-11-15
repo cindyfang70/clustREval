@@ -7,13 +7,14 @@
 geneSetEval(sce, clusters)
 }
 \arguments{
-\item{sce}{A SingleCellExperiment object}
+\item{sce}{A SingleCellExperiment object with raw counts in the counts slot.}
 
-\item{clusters}{Clustering results from the SingleCellExperiment}
+\item{clusters}{Factor representing clustering results from a pipeline for the SingleCellExperiment.}
 }
 \value{
-Mean enrichment score for genes in each cluster
+Tibble containing gene set enrichment results for all clusters.
 }
 \description{
-geneSetEval
+A function that uses MSigDB Hallmark Pathways to compute gene set enrichment analysis for each clustering output
+given in clusters.
 }

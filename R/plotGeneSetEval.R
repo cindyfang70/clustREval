@@ -1,8 +1,11 @@
 library(Seurat)
 library(gridExtra)
 
-#' Title
+#' plotGeneSetEval
 #'
+#'  A function that plots gene set enrichment analysis results for each cluster in
+#' order to visualize biological differences between clusters.
+#' 
 #' @param sce A single cell experiment object
 #' @param clusters Clustering results for the SingleCellExperiment
 #' @param gseas A tibble containing enrichment values for each cluster computed from geneSetEval

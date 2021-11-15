@@ -5,13 +5,17 @@ library(SingleCellExperiment)
 
 #' computeUnsupervisedMetrics
 #'
-#' @param sce A SingleCellExperiment object
-#' @param clusters Clustering results for the SingleCellExperiment object
+#' A function that computes Dunn Index and and mean Silhouette score for a clustering output
 #'
-#' @return unsupervised metrics
+#' @param sce A SingleCellExperiment object with raw counts in the counts slot.
+#' @param clusters Factor representing clustering results for the SingleCellExperiment object.
+#'
+#' @return A list with the Dunn Index and mean Silhouette score as elements
 #' @export
 #'
 #' @examples
+#' # Example:
+#' 
 computeUnsupervisedMetrics <- function(sce, clusters){
   filt_sce <- sce[,rownames(as.matrix(clusters))]
   filt_sce <- scuttle::logNormCounts(filt_sce)

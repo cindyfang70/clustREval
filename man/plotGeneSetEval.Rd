@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotGeneSetEval.R
 \name{plotGeneSetEval}
 \alias{plotGeneSetEval}
-\title{Title}
+\title{plotGeneSetEval}
 \usage{
 plotGeneSetEval(sce, clusters, gseas)
 }
@@ -17,5 +17,6 @@ plotGeneSetEval(sce, clusters, gseas)
 a plot
 }
 \description{
-Title
+A function that plots gene set enrichment analysis results for each cluster in
+order to visualize biological differences between clusters.
 }

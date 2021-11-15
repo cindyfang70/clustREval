@@ -7,13 +7,17 @@
 computeUnsupervisedMetrics(sce, clusters)
 }
 \arguments{
-\item{sce}{A SingleCellExperiment object}
+\item{sce}{A SingleCellExperiment object with raw counts in the counts slot.}
 
-\item{clusters}{Clustering results for the SingleCellExperiment object}
+\item{clusters}{Factor representing clustering results for the SingleCellExperiment object.}
 }
 \value{
-unsupervised metrics
+A list with the Dunn Index and mean Silhouette score as elements
 }
 \description{
-computeUnsupervisedMetrics
+A function that computes Dunn Index and and mean Silhouette score for a clustering output
+}
+\examples{
+# Example:
+
 }

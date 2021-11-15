@@ -9,11 +9,14 @@ library(dplyr)
 library(tibble)
 
 #' geneSetEval
+#' 
+#' A function that uses MSigDB Hallmark Pathways to compute gene set enrichment analysis for each clustering output 
+#' given in clusters.
 #'
-#' @param sce A SingleCellExperiment object
-#' @param clusters Clustering results from the SingleCellExperiment
+#' @param sce A SingleCellExperiment object with raw counts in the counts slot.
+#' @param clusters Factor representing clustering results from a pipeline for the SingleCellExperiment.
 #'
-#' @return Mean enrichment score for genes in each cluster
+#' @return Tibble containing gene set enrichment results for all clusters.
 #' @export
 #'
 #' @examples
@@ -54,8 +57,5 @@ geneSetEval <- function(sce, clusters){
       arrange(desc(NES))
     #mean(abs(fgseaResTidy$ES))
   })
-  #gseas_df <- as.data.frame(gseas)
-  
-  
   return(gseas)
 }

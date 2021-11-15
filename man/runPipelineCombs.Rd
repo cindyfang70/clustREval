@@ -19,31 +19,32 @@ runPipelineCombs(
 )
 }
 \arguments{
-\item{sce}{SingleCellExperiment object with counts matrix and phenoid colData entry.}
+\item{sce}{SingleCellExperiment object with raw counts in counts slot.}
 
 \item{outputPrefix}{String indicating the prefix of the filepath that results should save to}
 
-\item{doubletmethod}{list of doublet detection methods}
+\item{doubletmethod}{Character list of doublet detection methods}
 
-\item{filt}{list of filtering methods}
+\item{filt}{Character list of filtering methods}
 
-\item{norm}{list of normalization methods}
+\item{norm}{Character list of normalization methods}
 
-\item{sel}{list of selection methods}
+\item{sel}{Character list of selection methods}
 
-\item{selnb}{list of number of genes to select}
+\item{selnb}{Character list of number of genes to select}
 
-\item{dr}{list of dimensionality reduction methods}
+\item{dr}{Character list of dimensionality reduction methods}
 
-\item{clustmethod}{list of clustering methods}
+\item{clustmethod}{Character list of clustering methods}
 
-\item{dims}{list of dimensions for dimensionality reduction}
+\item{dims}{Numeric list of dimensions for dimensionality reduction}
 
-\item{resolution}{list of clustering resolutions}
+\item{resolution}{Character list of clustering resolutions}
 }
 \value{
-end outputs object
+List of factors containing clustering results from each pipeline run.
 }
 \description{
-Run user-defined clustering pipeline combinations on a user-specificed scRNA-seq dataset.
+A function that runs user-defined clustering pipelines by taking all possible combinations of user-provided pipeline hyperparameters.
+User-provided hyperparameters must match available options.
 }
