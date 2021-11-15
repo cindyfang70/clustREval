@@ -11,7 +11,14 @@
 
 ClustREval is a package for evaluating the performance of different
 clustering pipelines on scRNA-seq data using unsupervised metrics and
-gene set enrichment analysis.
+gene set enrichment analysis. Clustering is a powerful tool for helping
+researchers to detect cellular heterogeniety. However, clustering
+performance is highly dependent on parameters used in the clustering
+pipeline, for which there are no systematic recommendations. This
+package allows users to compute clustering results from various
+clustering pipelines defined by user-specified parameters. Clustering
+results can then be evaluated using comparing unsupervised clustering
+metrics and differential gene expression between results.
 
 ## Installation
 
@@ -26,8 +33,8 @@ library("clustREval")
 ## Overview
 
 ``` r
-ls("package:TestingPackage")
-data(package = "TestingPackage") # optional
+ls("package:clustREval")
+data(package = "clustREval") # optional
 ```
 
 ``` r
