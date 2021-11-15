@@ -4,6 +4,9 @@ library(fgsea) # BioConductor
 library(org.Hs.eg.db) # BioConductor
 library(AnnotationDbi) # BioConductor
 library(tidyverse)
+library(Seurat)
+library(dplyr)
+library(tibble)
 
 #' geneSetEval
 #'
@@ -29,17 +32,17 @@ geneSetEval <- function(sce, clusters){
                    })
   
   mapped_logFCs <- lapply(logFCs, function(logfc){
-    ens2symbol <- AnnotationDbi::select(org.Hs.eg.db,
+    ens2symbol <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db,
                                         key=names(logfc),
                                         columns="SYMBOL",
                                         keytype="ENSEMBL")
     ens2symbol <- tibble::as_tibble(ens2symbol)
-    res <- inner_join(as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
+    res <- dplyr::inner_join(as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
     res2 <- res %>%
-      dplyr::select(SYMBOL, value) %>%
+      dplyr::select("SYMBOL", value) %>%
       na.omit() %>%
       distinct() %>%
-      group_by(SYMBOL)
+      group_by("SYMBOL")
     ranks <- deframe(res2)
     ranks
   })
@@ -49,10 +52,10 @@ geneSetEval <- function(sce, clusters){
     fgseaResTidy <- fgseaRes %>%
       as_tibble() %>%
       arrange(desc(NES))
-    mean(abs(fgseaResTidy$ES))
+    #mean(abs(fgseaResTidy$ES))
   })
-  gseas_df <- as.data.frame(gseas)
+  #gseas_df <- as.data.frame(gseas)
   
   
-  return(gseas_df)
+  return(gseas)
 }

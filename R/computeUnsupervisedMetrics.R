@@ -1,6 +1,7 @@
 library(cluster)
 library(Seurat)
 library(clValid)
+library(SingleCellExperiment)
 
 #' computeUnsupervisedMetrics
 #'
@@ -17,12 +18,13 @@ computeUnsupervisedMetrics <- function(sce, clusters){
   
   seu <- Seurat::as.Seurat(filt_sce, counts="counts", data="logcounts")
   var.genes <- Seurat::FindVariableFeatures(seu)
-  var.names <- head(Seurat::VariableFeatures(var.genes), 500)
+  var.names <- utils::head(Seurat::VariableFeatures(var.genes), 500)
   filt_sce <- filt_sce[var.names,]
   
   clusters <- as.numeric(clusters)
-  dunnIndex <- clValid::dunn(clusters=clusters, Data=as.matrix(counts(filt_sce)))
-  dissim <- cluster::daisy(t(as.matrix(counts(filt_sce))))
+  countsMat <- as.matrix(SingleCellExperiment::counts(filt_sce))
+  dunnIndex <- clValid::dunn(clusters=clusters, Data=countsMat)
+  dissim <- cluster::daisy(t(countsMat))
   silhouetteIndex <- cluster::silhouette(as.matrix(clusters), dist=dissim)
 
   metrics <- cbind(dunnIndex, mean(silhouetteIndex[,3]))
