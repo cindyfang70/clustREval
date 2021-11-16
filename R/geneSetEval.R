@@ -32,6 +32,26 @@ library(tibble)
 #' }
 
 geneSetEval <- function(sce, clusters, gmtPathway){
+  if (!file.exists(gmtPathway)){
+    stop("File not found. Please provide a valid filepath for the hallmark pathways.")
+  }
+  if(!grepl("*\\.gmt$",gmtPathway)){
+    stop("File format not valid, please provide a .gmt file.")
+  }
+  if(class(sce)[[1]] != "SingleCellExperiment"){
+    stop("sce must be a SingleCellExperiment object.")
+  }
+  if(class(clusters)[[1]] != "factor"){
+    stop("Clustering results must be provided as a factor.")
+  }
+  if(length(clusters) > dim(sce)[[2]]){
+    stop("There are more cells in the clustering output than in the SingleCellExperiment. Please ensure that all cells
+         in the clustering output are from the original experiment.")
+  }
+  if(!any(rownames(as.matrix(clusters)) %in% colnames(sce))){
+    stop("Clustered cells must be a subset of cells in the SingleCellExperiment object.")
+  }
+
   pathways.hallmark <- fgsea::gmtPathways(gmtPathway)
   filt_sce <- sce[,rownames(as.matrix(clusters))]
   filt_sce <- scuttle::logNormCounts(filt_sce)
@@ -51,21 +71,21 @@ geneSetEval <- function(sce, clusters, gmtPathway){
                                         columns="SYMBOL",
                                         keytype="ENSEMBL")
     ens2symbol <- tibble::as_tibble(ens2symbol)
-    res <- dplyr::inner_join(as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
+    res <- dplyr::inner_join(tibble::as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
     res2 <- res %>%
-      dplyr::select("SYMBOL", value) %>%
-      na.omit() %>%
-      distinct() %>%
-      group_by("SYMBOL")
-    ranks <- deframe(res2)
+      dplyr::select("SYMBOL", "value") %>%
+      stats::na.omit() %>%
+      dplyr::distinct() %>%
+      dplyr::group_by("SYMBOL")
+    ranks <- tibble::deframe(res2)
     ranks
   })
   
   gseas <- lapply(mapped_logFCs, function(mapped_logfc){
-    fgseaRes <- fgsea(mapped_logfc, pathways = pathways.hallmark)
+    fgseaRes <- fgsea::fgsea(mapped_logfc, pathways = pathways.hallmark)
     fgseaResTidy <- fgseaRes %>%
-      as_tibble() %>%
-      arrange(desc(NES))
+      tibble::as_tibble() %>%
+      dplyr::arrange(dplyr::desc(NES))
     #mean(abs(fgseaResTidy$ES))
   })
   return(gseas)

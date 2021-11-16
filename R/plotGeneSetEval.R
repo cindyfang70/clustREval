@@ -23,6 +23,7 @@ library(gridExtra)
 
 plotGeneSetEval <- function(gseas){
   plots <- c()
+  library(ggplot2)
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
     p <- ggplot(gseas[[i]], aes(reorder(pathway, NES), NES)) +

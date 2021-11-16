@@ -14,9 +14,4 @@
 #' @format A list with two levels
 "embryoClusts"
 
-#' MSigDB Hallmark Pathways for gene set enrichment analysis
-#' 
-#'
-# Hallmark pathways
-#' @format pathways
-"h.all.v7.4.symbols.gmt"
+
