@@ -44,7 +44,7 @@ library(labelled)
 #' res
 #' 
 #' # Example 2: Run with user-defined parameters
-#' \dontrun{}
+#' \dontrun{
 #' data(embryo)
 #' filtMethods <- c("filt.lenient", "filt.stringent")
 #' res <- runPipelineCombs(sce=embryo, outputPrefix="embryo", filt=filtMethods)
@@ -131,7 +131,7 @@ runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none")
   pip_def@aggregation$clustering <- evalDummy
   
   outputPrefix <- paste("data", outputPrefix, sep="/")
-  res <- pipeComp::runPipeline(sce, output.prefix = outputPrefix, alternatives, pip_def, nthreads=1, debug=TRUE)
+  suppressWarnings(res <- pipeComp::runPipeline(sce, output.prefix = outputPrefix, alternatives, pip_def, nthreads=1, debug=TRUE))
   clustersPath <- paste0(outputPrefix, "res.sce.endOutputs.rds")
   
   print(clustersPath)

@@ -7,7 +7,7 @@
 plotGeneSetEval(gseas)
 }
 \arguments{
-\item{gseas}{A tibble containing enrichment values for each cluster computed from geneSetEval}
+\item{gseas}{A list containing enrichment values for each cluster computed from geneSetEval}
 }
 \value{
 A plot for each clustering output showing the enriched pathways for each.

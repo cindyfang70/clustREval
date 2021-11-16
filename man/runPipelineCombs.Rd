@@ -69,8 +69,10 @@ res <- clustREval::runPipelineCombs(sce=embryo, outputPrefix="embryo")
 res
 
 # Example 2: Run with user-defined parameters
+\dontrun{
 data(embryo)
 filtMethods <- c("filt.lenient", "filt.stringent")
 res <- runPipelineCombs(sce=embryo, outputPrefix="embryo", filt=filtMethods)
 res
+}
 }
