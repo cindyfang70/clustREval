@@ -4,19 +4,25 @@
 \alias{plotGeneSetEval}
 \title{plotGeneSetEval}
 \usage{
-plotGeneSetEval(sce, clusters, gseas)
+plotGeneSetEval(gseas)
 }
 \arguments{
-\item{sce}{A single cell experiment object}
-
-\item{clusters}{Clustering results for the SingleCellExperiment}
-
 \item{gseas}{A tibble containing enrichment values for each cluster computed from geneSetEval}
 }
 \value{
-a plot
+A plot for each clustering output showing the enriched pathways for each.
 }
 \description{
 A function that plots gene set enrichment analysis results for each cluster in
 order to visualize biological differences between clusters.
+}
+\examples{
+# Example:
+\dontrun{
+data(embryo)
+data(embryoClusts)
+# Compute pathways for the first clustering output
+geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+plotGeneSetEval(geneSetRes)
+}
 }

@@ -15,6 +15,13 @@ library(SingleCellExperiment)
 #'
 #' @examples
 #' # Example:
+#' \dontrun{
+#' data(embryo)
+#' data(embryoClusts)
+#' # Compute metrics for the first clustering output on the embryo dataset
+#' metrics <- computeUnsupervisedMetrics(embryo, embryoClusts[[1]])
+#' }
+
 #' 
 computeUnsupervisedMetrics <- function(sce, clusters){
   filt_sce <- sce[,rownames(as.matrix(clusters))]
@@ -31,6 +38,6 @@ computeUnsupervisedMetrics <- function(sce, clusters){
   dissim <- cluster::daisy(t(countsMat))
   silhouetteIndex <- cluster::silhouette(as.matrix(clusters), dist=dissim)
 
-  metrics <- cbind(dunnIndex, mean(silhouetteIndex[,3]))
+  metrics <- c(dunnIndex=dunnIndex, meanSilhouette=mean(silhouetteIndex[,3]))
   return(metrics)
 }

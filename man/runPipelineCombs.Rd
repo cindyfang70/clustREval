@@ -23,23 +23,23 @@ runPipelineCombs(
 
 \item{outputPrefix}{String indicating the prefix of the filepath that results should save to}
 
-\item{doubletmethod}{Character list of doublet detection methods}
+\item{doubletmethod}{Character list of doublet detection methods. Default: none}
 
-\item{filt}{Character list of filtering methods}
+\item{filt}{Character list of filtering methods. Default: filt.default}
 
-\item{norm}{Character list of normalization methods}
+\item{norm}{Character list of normalization methods Default: norm.seurat}
 
-\item{sel}{Character list of selection methods}
+\item{sel}{Character list of selection methods. Default: sel.vst}
 
-\item{selnb}{Character list of number of genes to select}
+\item{selnb}{Numeric list of number of genes to select. Default: 2000}
 
-\item{dr}{Character list of dimensionality reduction methods}
+\item{dr}{Character list of dimensionality reduction methods. Default: seurat.pca}
 
-\item{clustmethod}{Character list of clustering methods}
+\item{clustmethod}{Character list of clustering methods Default: clust.seurat}
 
-\item{dims}{Numeric list of dimensions for dimensionality reduction}
+\item{dims}{Numeric list of dimensions for dimensionality reduction. Default: 10}
 
-\item{resolution}{Character list of clustering resolutions}
+\item{resolution}{Character list of clustering resolutions. Default: 0.1, 0.2}
 }
 \value{
 List of factors containing clustering results from each pipeline run.
@@ -47,4 +47,16 @@ List of factors containing clustering results from each pipeline run.
 \description{
 A function that runs user-defined clustering pipelines by taking all possible combinations of user-provided pipeline hyperparameters.
 User-provided hyperparameters must match available options.
+}
+\examples{
+# Example 1: Run with default parameters
+data(embryo)
+res <- runPipelineCombs(sce=embryo, outputPrefix="results/embryo")
+res
+
+# Example 2: Run with user-defined parameters
+data(embryo)
+filtMethods <- c("filt.lenient", "filt.stringent")
+res <- runPipelineCombs(sce=embryo, outputPrefix="results/embryo", filt=filtMethods)
+res
 }

@@ -5,16 +5,23 @@ library(gridExtra)
 #'
 #'  A function that plots gene set enrichment analysis results for each cluster in
 #' order to visualize biological differences between clusters.
-#' 
-#' @param sce A single cell experiment object
-#' @param clusters Clustering results for the SingleCellExperiment
+#'
 #' @param gseas A tibble containing enrichment values for each cluster computed from geneSetEval
 #'
-#' @return a plot
+#' @return A plot for each clustering output showing the enriched pathways for each.
 #' @export
 #'
 #' @examples
-plotGeneSetEval <- function(sce, clusters, gseas){
+#' # Example:
+#' \dontrun{
+#' data(embryo)
+#' data(embryoClusts)
+#' # Compute pathways for the first clustering output
+#' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+#' plotGeneSetEval(geneSetRes)
+#' }
+
+plotGeneSetEval <- function(gseas){
   plots <- c()
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)

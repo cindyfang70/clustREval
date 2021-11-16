@@ -19,5 +19,11 @@ A function that computes Dunn Index and and mean Silhouette score for a clusteri
 }
 \examples{
 # Example:
+\dontrun{
+data(embryo)
+data(embryoClusts)
+# Compute metrics for the first clustering output on the embryo dataset
+metrics <- computeUnsupervisedMetrics(embryo, embryoClusts[[1]])
+}
 
 }

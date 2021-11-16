@@ -18,3 +18,13 @@ Tibble containing gene set enrichment results for all clusters.
 A function that uses MSigDB Hallmark Pathways to compute gene set enrichment analysis for each clustering output
 given in clusters.
 }
+\examples{
+# Example:
+\dontrun{
+data(embryo)
+data(embryoClusts)
+# Compute pathways for the first clustering output
+geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+geneSetRes
+}
+}

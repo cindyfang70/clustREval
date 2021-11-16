@@ -20,6 +20,15 @@ library(tibble)
 #' @export
 #'
 #' @examples
+#' # Example:
+#' \dontrun{
+#' data(embryo)
+#' data(embryoClusts)
+#' # Compute pathways for the first clustering output
+#' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+#' geneSetRes
+#' }
+
 geneSetEval <- function(sce, clusters){
   pathways.hallmark <- fgsea::gmtPathways("h.all.v7.4.symbols.gmt")
   filt_sce <- sce[,rownames(as.matrix(clusters))]
