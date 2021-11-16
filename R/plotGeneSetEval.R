@@ -6,7 +6,7 @@ library(gridExtra)
 #'  A function that plots gene set enrichment analysis results for each cluster in
 #' order to visualize biological differences between clusters.
 #'
-#' @param gseas A tibble containing enrichment values for each cluster computed from geneSetEval
+#' @param gseas A list containing enrichment values for each cluster computed from geneSetEval
 #'
 #' @return A plot for each clustering output showing the enriched pathways for each.
 #' @export
