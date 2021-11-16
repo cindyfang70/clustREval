@@ -5,8 +5,7 @@
 \alias{embryoClusts}
 \title{Embryo data clustering results from two pipelines.}
 \format{
-A list wi
-th two levels
+A list with two levels
 }
 \usage{
 embryoClusts

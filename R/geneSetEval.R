@@ -15,6 +15,7 @@ library(tibble)
 #'
 #' @param sce A SingleCellExperiment object with raw counts in the counts slot.
 #' @param clusters Factor representing clustering results from a pipeline for the SingleCellExperiment.
+#' @param gmtPathway File path pointing to a .gmt file for gene set analysis.
 #'
 #' @return Tibble containing gene set enrichment results for all clusters.
 #' @export
@@ -24,13 +25,14 @@ library(tibble)
 #' \dontrun{
 #' data(embryo)
 #' data(embryoClusts)
-#' # Compute pathways for the first clustering output
-#' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+#' # Compute pathways for the first clustering output by accessing raw data provided for pathways file
+#' GMTPath <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREval")
+#' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]], GMTPath)
 #' geneSetRes
 #' }
 
-geneSetEval <- function(sce, clusters){
-  pathways.hallmark <- fgsea::gmtPathways("h.all.v7.4.symbols.gmt")
+geneSetEval <- function(sce, clusters, gmtPathway){
+  pathways.hallmark <- fgsea::gmtPathways(gmtPathway)
   filt_sce <- sce[,rownames(as.matrix(clusters))]
   filt_sce <- scuttle::logNormCounts(filt_sce)
   

@@ -4,12 +4,14 @@
 \alias{geneSetEval}
 \title{geneSetEval}
 \usage{
-geneSetEval(sce, clusters)
+geneSetEval(sce, clusters, gmtPathway)
 }
 \arguments{
 \item{sce}{A SingleCellExperiment object with raw counts in the counts slot.}
 
 \item{clusters}{Factor representing clustering results from a pipeline for the SingleCellExperiment.}
+
+\item{gmtPathway}{File path pointing to a .gmt file for gene set analysis.}
 }
 \value{
 Tibble containing gene set enrichment results for all clusters.
@@ -23,8 +25,9 @@ given in clusters.
 \dontrun{
 data(embryo)
 data(embryoClusts)
-# Compute pathways for the first clustering output
-geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+# Compute pathways for the first clustering output by accessing raw data provided for pathways file
+GMTPath <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREval")
+geneSetRes <- geneSetEval(embryo, embryoClusts[[1]], GMTPath)
 geneSetRes
 }
 }
