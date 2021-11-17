@@ -27,11 +27,11 @@ plotGeneSetEval <- function(gseas){
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
     p <- ggplot2::ggplot(gseas[[i]], ggplot2::aes(reorder(pathway, NES), NES)) +
-      ggplot2::geom_col(aes(fill=padj<0.05)) +
-      ggplot2::coord_flip() +
+      ggplot2::ggplot2::geom_col(ggplot2::aes(fill=padj<0.05)) +
+      ggplot2::ggplot2::coord_flip() +
       ggplot2::labs(x="Pathway", y="Normalized Enrichment Score",
         title=sprintf("Hallmark pathways NES from GSEA for Cluster %s", names(gseas)[[i]]))+
-      ggplot2::theme(axis.text.y=element_text(size=3))
+      ggplot2::theme(axis.text.y=ggplot2::element_text(size=3))
     plots <- c(plots, list(p))
   }
   n <- length(plots)
