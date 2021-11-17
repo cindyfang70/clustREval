@@ -26,7 +26,7 @@ plotGeneSetEval <- function(gseas){
   plots <- c()
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
-    p <- ggplot2::ggplot(gseas[[i]], aes(reorder(pathway, NES), NES)) +
+    p <- ggplot2::ggplot(gseas[[i]], ggplot2::aes(reorder(pathway, NES), NES)) +
       ggplot2::geom_col(aes(fill=padj<0.05)) +
       ggplot2::coord_flip() +
       ggplot2::labs(x="Pathway", y="Normalized Enrichment Score",
