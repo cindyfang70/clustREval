@@ -21,7 +21,6 @@ To download **clustREval**, use the following commands:
 require("devtools")
 devtools::install_github("cindyfang70/clustREval", build_vignettes = TRUE)
 library("clustREval")
-
 ```
 
 ## Getting started

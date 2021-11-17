@@ -41,7 +41,25 @@ data(package = "clustREval") # optional
 browseVignettes("clustREval")
 ```
 
-The package tree structure is provided below (optional).
+clustREval contains four functions that aid in the evaluation of
+clustering performance.
+
+The `runPipelineCombs` function runs all combinations of user-specified
+clustering pipelines. The user simply has to define the various
+parameters to use at each step in the pipeline and provide the data to
+perform clustering on.
+
+The `computeUnsupervisedMetrics` function computes the Dunn index and
+mean silhouette width of a clustering output.
+
+The `geneSetEval` function performs Gene Set Enrichment Analysis (GSEA)
+on each of the clusters from a clustering output and returns enrichment
+scores based on the Hallmark Pathways from MSigDB.
+
+The `plotGeneSetEval` function plots the enrichment scores from GSEA.
+
+An overview of the package is illustrated below:
+![](./inst/extdata/files.png)
 
 ## Contributions
 
