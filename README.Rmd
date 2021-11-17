@@ -20,6 +20,12 @@ knitr::opts_chunk$set(
 
 ClustREval is a package for evaluating the performance of different clustering pipelines on scRNA-seq data using unsupervised metrics and gene set enrichment analysis. Clustering is a powerful tool for helping researchers to detect cellular heterogeniety. However, clustering performance is highly dependent on parameters used in the clustering pipeline, for which there are no systematic recommendations. This package allows users to compute clustering results from various clustering pipelines defined by user-specified parameters. Clustering results can then be evaluated using comparing unsupervised clustering metrics and differential gene expression between results.
 
+``` r
+R version 4.0.3 (2020-10-10)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+```
+
 ## Installation
 
 To install the latest version of the package:

@@ -20,6 +20,12 @@ clustering pipelines defined by user-specified parameters. Clustering
 results can then be evaluated using comparing unsupervised clustering
 metrics and differential gene expression between results.
 
+``` r
+R version 4.0.3 (2020-10-10)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+```
+
 ## Installation
 
 To install the latest version of the package:
