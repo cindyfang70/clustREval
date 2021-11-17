@@ -54,7 +54,21 @@ An overview of the package is illustrated below:
 
 
 ## Contributions
-The contributor for this package is Xin Zhi Fang.
+The author for this package is Xin Zhi Fang. 
+
+The ``` runPipelineCombs``` uses the ``` pipeComp``` library to run all pipeline combinations, but does not use the same end results. The evaluation step from the ``` pipeComp``` library is bypassed as it depends on cell type labels (which are not always available).
+
+The ``` fgsea ``` package is used to perform GSEA on the clusters. As well, ```AnnotationDbi``` and ```org.Hs.eg.db``` are used to help map the gene symbols to names.
+
+```scran```,```Seurat```, and ```scuttle``` are used in various functions for preprocessing of the scRNA-seq data. 
+
+```SingleCellExperiment``` is used in almost all functions to store scRNA-seq data.
+
+```cluster``` and ```clValid``` were used to calculate the silhouette score and Dunn index, respectively.
+
+```ggplot2``` and ```gridExtra``` were used for plotting functionality.
+
+```labelled```, ```tibble```, ```tidyverse```, ```dplyr```, and ```magrittr``` were used for data manipulation.
 
 
 ## References 
@@ -104,6 +118,8 @@ https://doi.org/10.12688/f1000research.9501.2).
 
 17. Baptiste Auguie (2017). gridExtra: Miscellaneous Functions for "Grid" Graphics. R package version 2.3.
   https://CRAN.R-project.org/package=gridExtra
+  
+18. Carlson M (2019). org.Hs.eg.db: Genome wide annotation for Human. R package version 3.8.2.
 
 ## Acknowledgements
 
