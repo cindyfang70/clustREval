@@ -1,7 +1,3 @@
-library(pipeComp)
-library(scuttle)
-library(labelled)
-
 #' runPipelineCombs
 #' 
 #' A function that runs user-defined clustering pipelines by taking all possible combinations of user-provided pipeline hyperparameters.

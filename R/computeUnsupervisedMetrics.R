@@ -1,8 +1,3 @@
-library(cluster)
-library(Seurat)
-library(clValid)
-library(SingleCellExperiment)
-
 #' computeUnsupervisedMetrics
 #'
 #' A function that computes Dunn Index and and mean Silhouette score for a clustering output

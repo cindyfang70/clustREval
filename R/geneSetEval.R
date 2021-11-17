@@ -1,14 +1,3 @@
-library(scran)
-library(scuttle)
-library(fgsea) # BioConductor
-library(org.Hs.eg.db) # BioConductor
-library(AnnotationDbi) # BioConductor
-library(tidyverse)
-library(Seurat)
-library(dplyr)
-library(tibble)
-library(magrittr)
-
 #' geneSetEval
 #' 
 #' A function that uses MSigDB Hallmark Pathways to compute gene set enrichment analysis for each clustering output 

@@ -1,7 +1,3 @@
-library(Seurat)
-library(gridExtra)
-library(ggplot2)
-
 #' plotGeneSetEval
 #'
 #'  A function that plots gene set enrichment analysis results for each cluster in
@@ -23,18 +19,13 @@ library(ggplot2)
 #' }
 
 plotGeneSetEval <- function(gseas){
-  plots <- c()
-  for(i in 1:length(gseas)){
-    gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
-    p <- ggplot2::ggplot(gseas[[i]], ggplot2::aes(reorder(pathway, NES), NES)) +
+  gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
+  p <- ggplot2::ggplot(gseas, ggplot2::aes(reorder(pathway, NES), NES)) +
       ggplot2::geom_col(ggplot2::aes(fill=padj<0.05)) +
       ggplot2::coord_flip() +
       ggplot2::labs(x="Pathway", y="Normalized Enrichment Score",
-        title=sprintf("Hallmark pathways NES from GSEA for Cluster %s", names(gseas)[[i]]))+
+        title=sprintf("Hallmark pathways NES from GSEA for Cluster %s", names(gseas)))+
       ggplot2::theme(axis.text.y=ggplot2::element_text(size=3))
-    plots <- c(plots, list(p))
-  }
-  n <- length(plots)
-  nCol <- floor(sqrt(n))
-  do.call("ggplot2::grid.arrange", c(plots=plots, ncol=nCol))
+  return(p)
+
 }
