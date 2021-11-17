@@ -18,7 +18,7 @@ library(labelled)
 #' @param dr Character vector of dimensionality reduction methods. Default: seurat.pca
 #' @param dims Numeric vector of dimensions for dimensionality reduction. Default: 10
 #' @param clustmethod Character vector of clustering methods Default: clust.seurat
-#' @param resolution Character vector of clustering resolutions. Default: 0.1, 0.2
+#' @param resolution Character vector of clustering resolutions. Default: 0.1, 1
 #' 
 #' @return List of factors containing clustering results from each pipeline run.
 #' @export
@@ -51,7 +51,7 @@ library(labelled)
 #' res
 #' }
 
-runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none"), filt=c("filt.default"), norm=c("norm.seurat"), sel=c("sel.vst"), selnb=2000, dr=c("seurat.pca"), clustmethod=c("clust.seurat"), dims=c(10), resolution=c(0.1, 0.2)){
+runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none"), filt=c("filt.default"), norm=c("norm.seurat"), sel=c("sel.vst"), selnb=2000, dr=c("seurat.pca"), clustmethod=c("clust.seurat"), dims=c(10), resolution=c(0.1, 1)){
   if(class(sce)[[1]] != "SingleCellExperiment"){
     stop("sce must be a SingleCellExperiment object.")
   }
@@ -131,7 +131,7 @@ runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none")
   pip_def@aggregation$clustering <- evalDummy
   
   outputPrefix <- paste("data", outputPrefix, sep="/")
-  suppressWarnings(res <- pipeComp::runPipeline(sce, output.prefix = outputPrefix, alternatives, pip_def, nthreads=1, debug=TRUE))
+  suppressWarnings(res <- pipeComp::runPipeline(sce, output.prefix = outputPrefix, alternatives, pip_def, nthreads=1, debug=FALSE))
   clustersPath <- paste0(outputPrefix, "res.sce.endOutputs.rds")
   
   print(clustersPath)
