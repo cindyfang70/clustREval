@@ -1,5 +1,7 @@
 library(Seurat)
 library(gridExtra)
+library(ggplot2)
+library(arrangeGrob)
 
 #' plotGeneSetEval
 #'
@@ -26,9 +28,9 @@ plotGeneSetEval <- function(gseas){
   library(ggplot2)
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
-    p <- ggplot(gseas[[i]], aes(reorder(pathway, NES), NES)) +
-      geom_col(aes(fill=padj<0.05)) +
-      coord_flip() +
+    p <- ggplot2::ggplot(gseas[[i]], aes(reorder(pathway, NES), NES)) +
+      ggplot2::geom_col(aes(fill=padj<0.05)) +
+      ggplot2::coord_flip() +
       labs(x="Pathway", y="Normalized Enrichment Score",
         title=sprintf("Hallmark pathways NES from GSEA for Cluster %s", names(gseas)[[i]]))+
       theme(axis.text.y=element_text(size=3))
@@ -36,5 +38,5 @@ plotGeneSetEval <- function(gseas){
   }
   n <- length(plots)
   nCol <- floor(sqrt(n))
-  do.call("grid.arrange", c(plots=plots, ncol=nCol))
+  do.call("arrangeGrob::grid.arrange", c(plots=plots, ncol=nCol))
 }
