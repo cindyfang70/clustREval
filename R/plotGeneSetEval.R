@@ -1,11 +1,11 @@
 #' plotGeneSetEval
 #'
-#'  A function that plots gene set enrichment analysis results for each cluster in
+#'  A function that plots gene set enrichment analysis results for a cluster in
 #' order to visualize biological differences between clusters.
 #'
 #' @param gseas A list containing enrichment values for each cluster computed from geneSetEval
 #'
-#' @return A plot for each clustering output showing the enriched pathways for each.
+#' @return A plot for one cluster from a clustering output showing the enriched pathways for that cluster.
 #' @export
 #'
 #' @examples
@@ -15,7 +15,7 @@
 #' data(embryoClusts)
 #' # Compute pathways for the first clustering output
 #' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
-#' plotGeneSetEval(geneSetRes)
+#' plotGeneSetEval(geneSetRes[[1]])
 #' }
 
 plotGeneSetEval <- function(gseas){
@@ -27,5 +27,4 @@ plotGeneSetEval <- function(gseas){
         title=sprintf("Hallmark pathways NES from GSEA for Cluster"))+
       ggplot2::theme(axis.text.y=ggplot2::element_text(size=3))
   return(p)
-
 }

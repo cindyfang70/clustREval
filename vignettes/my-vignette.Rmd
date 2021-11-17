@@ -51,4 +51,5 @@ GMTPathway <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustR
 library(magrittr)
 gsea1 <- geneSetEval(embryo, embryoClusts[[1]], GMTPathway)
 gsea2 <- geneSetEval(embryo, embryoClusts[[2]], GMTPathway)
+plotGeneSetEval(gsea1[[1]])
 ```
