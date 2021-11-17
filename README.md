@@ -171,6 +171,16 @@ data manipulation.
 18. Carlson M (2019). org.Hs.eg.db: Genome wide annotation for Human. R
     package version 3.8.2.
 
+19. Yan L, Yang M, Guo H, et al. Single-cell RNA-Seq profiling of human
+    preimplantation embryos and embryonic stem cells. *Nature Structural
+    & Molecular Biology*. 2013 Sep;20(9):1131-1139. DOI:
+    10.1038/nsmb.2660. PMID: 23934149.
+
+20. Liberzon, A., Birger, C., Thorvaldsdóttir, H., Ghandi, M., Mesirov,
+    J. P., & Tamayo, P. (2015). The Molecular Signatures Database
+    (MSigDB) hallmark gene set collection. *Cell systems*, 1(6),
+    417–425. <https://doi.org/10.1016/j.cels.2015.12.004>
+
 ## Acknowledgements
 
 This package was developed for BCB410H: Applied Bioinformatics,
