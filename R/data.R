@@ -14,4 +14,11 @@
 #' @format A list with two levels
 "embryoClusts"
 
+#' GSEA results for embryo data clustered with first pipeline option.
+#' 
+#'
+# GSEA results for the four clusters outputted by the pipeline.
+#' @format A list with 4 levels.
+"gsea"
+
 

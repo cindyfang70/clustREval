@@ -10,10 +10,10 @@ plotGeneSetEval(gseas)
 \item{gseas}{A list containing enrichment values for each cluster computed from geneSetEval}
 }
 \value{
-A plot for each clustering output showing the enriched pathways for each.
+A plot for one cluster from a clustering output showing the enriched pathways for that cluster.
 }
 \description{
-A function that plots gene set enrichment analysis results for each cluster in
+A function that plots gene set enrichment analysis results for a cluster in
 order to visualize biological differences between clusters.
 }
 \examples{
@@ -23,6 +23,6 @@ data(embryo)
 data(embryoClusts)
 # Compute pathways for the first clustering output
 geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
-plotGeneSetEval(geneSetRes)
+plotGeneSetEval(geneSetRes[[1]])
 }
 }
