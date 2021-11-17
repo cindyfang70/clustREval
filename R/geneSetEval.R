@@ -65,20 +65,19 @@ geneSetEval <- function(sce, clusters, gmtPathway){
                                         keytype="ENSEMBL"))
     ens2symbol <- tibble::as_tibble(ens2symbol)
     res <- dplyr::inner_join(tibble::as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
-    res2 <- res %>%
-      dplyr::select("SYMBOL", "value") %>%
-      stats::na.omit() %>%
-      dplyr::distinct() %>%
-      dplyr::group_by("SYMBOL")
+    res <- dplyr::select(res, "SYMBOL", "value")
+    res <- stats::na.omit(res)
+    res <- dplyr::distinct(res)
+    res2 <- dplyr::group_by(res, "SYMBOL")
     ranks <- tibble::deframe(res2)
     ranks
   }))
   
   suppressWarnings(gseas <- lapply(mapped_logFCs, function(mapped_logfc){
     fgseaRes <- fgsea::fgsea(mapped_logfc, pathways = pathways.hallmark)
-    fgseaResTidy <- fgseaRes %>%
-      tibble::as_tibble() %>%
-      dplyr::arrange(dplyr::desc(NES))
+    fgseaResTidy <- tibble::as_tibble(fgseaRes)
+    fgseaResTidy <- dplyr::arrange(fgseaResTidy, dplyr::desc(NES))
+    fgseaResTidy
     #mean(abs(fgseaResTidy$ES))
   }))
   return(gseas)
