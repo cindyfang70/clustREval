@@ -7,6 +7,7 @@ library(tidyverse)
 library(Seurat)
 library(dplyr)
 library(tibble)
+library(magrittr)
 
 #' geneSetEval
 #' 

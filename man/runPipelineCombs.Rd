@@ -15,7 +15,7 @@ runPipelineCombs(
   dr = c("seurat.pca"),
   clustmethod = c("clust.seurat"),
   dims = c(10),
-  resolution = c(0.1, 0.2)
+  resolution = c(0.1, 1)
 )
 }
 \arguments{
@@ -39,7 +39,7 @@ runPipelineCombs(
 
 \item{dims}{Numeric vector of dimensions for dimensionality reduction. Default: 10}
 
-\item{resolution}{Character vector of clustering resolutions. Default: 0.1, 0.2}
+\item{resolution}{Character vector of clustering resolutions. Default: 0.1, 1}
 }
 \value{
 List of factors containing clustering results from each pipeline run.
