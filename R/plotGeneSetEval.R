@@ -1,7 +1,6 @@
 library(Seurat)
 library(gridExtra)
 library(ggplot2)
-library(arrangeGrob)
 
 #' plotGeneSetEval
 #'
