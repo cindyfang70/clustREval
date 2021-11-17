@@ -1,0 +1,55 @@
+---
+title: "Overview of clustREval"
+author: Xin Zhi Fang
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: false
+vignette: >
+  %\VignetteIndexEntry{Overview of clustREval}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+## Introduction
+clustREval is an R package for the evaluation of clustering results for scRNA-seq data. This package allows users to run multiple clustering pipelines on their scRNA-seq dataset, then compute differential expression-based and unsupervised metrics to evaluate performance of each pipeline.
+
+To download **clustREval**, use the following commands:
+
+
+```{r setup, eval=TRUE, message=FALSE}
+require("devtools")
+devtools::install_github("cindyfang70/clustREval", build_vignettes = TRUE)
+library("clustREval")
+
+```
+
+## Getting started
+Let's cluster the embryo scRNA-seq data using the two default pipelines (not evaluated for sake of time):
+```{r, eval=FALSE}
+data(embryo)
+clustRes <- clustREval::runPipelineCombs(embryo)
+```
+The clustering results for the embryo data from the two default pipelines are included in the data directory, let's 
+load it:
+```{r}
+data(embryoClusts)
+head(embryoClusts)
+```
+Now, we have two clustering outputs on the same dataset. How do we know which one is better? Let's compute some unsupervised clustering metrics to see how each pipeline did.
+```{r}
+clustMetrics1 <- computeUnsupervisedMetrics(embryo, embryoClusts[[1]])
+clustMetrics2 <- computeUnsupervisedMetrics(embryo, embryoClusts[[2]])
+clustMetrics1
+clustMetrics2
+```
+We can see that the two pipeline performed very similarly. This is because the only difference between them is the clustering
+resolution, which are 0.1 and 0.2 respectively. A higher Dunn index and mean silhouette score indicate better clustering, so based on our unsupervised metrics, the 0.2 resolution pipeline is performing better.
+
+Now, let's take a look at the biological validity of our clusters by performing some gene set enrichment analysis.
+```{r, results=FALSE, message=FALSE, warning=FALSE}
+GMTPathway <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREval")
+library(magrittr)
+gsea1 <- geneSetEval(embryo, embryoClusts[[1]], GMTPathway)
+gsea2 <- geneSetEval(embryo, embryoClusts[[2]], GMTPathway)
+```
