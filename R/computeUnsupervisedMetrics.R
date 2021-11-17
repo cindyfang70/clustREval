@@ -31,10 +31,10 @@ computeUnsupervisedMetrics <- function(sce, clusters){
   if(class(clusters)[[1]] != "factor"){
     stop("Clustering results must be provided as a factor.")
   }
-  if(length(clusters) > dim(sce)[[2]]){
-    stop("There are more cells in the clustering output than in the SingleCellExperiment. Please ensure that all cells
-         in the clustering output are from the original experiment.")
-  }
+  # if(length(clusters) > dim(sce)[[2]]){
+  #   stop("There are more cells in the clustering output than in the SingleCellExperiment. Please ensure that all cells
+  #        in the clustering output are from the original experiment.")
+  # }
   if(!any(rownames(as.matrix(clusters)) %in% colnames(sce))){
     stop("Clustered cells must be a subset of cells in the SingleCellExperiment object.")
   }
