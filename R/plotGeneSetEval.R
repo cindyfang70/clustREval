@@ -19,7 +19,7 @@
 #' }
 
 plotGeneSetEval <- function(gseas){
-  gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
+  gseas$pathway <- gsub("HALLMARK_", "", gseas$pathway)
   p <- ggplot2::ggplot(gseas, ggplot2::aes(reorder(pathway, NES), NES)) +
       ggplot2::geom_col(ggplot2::aes(fill=padj<0.05)) +
       ggplot2::coord_flip() +
