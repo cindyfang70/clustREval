@@ -45,6 +45,9 @@ geneSetEval <- function(sce, clusters, gmtPathway){
     stop("Clustering results must be provided as a factor.")
   }
   if(length(clusters) > dim(sce)[[2]]){
+    print(length(clusters))
+    print(clusters)
+    print(sce)
     stop("There are more cells in the clustering output than in the SingleCellExperiment. Please ensure that all cells
          in the clustering output are from the original experiment.")
   }
@@ -52,24 +55,24 @@ geneSetEval <- function(sce, clusters, gmtPathway){
     stop("Clustered cells must be a subset of cells in the SingleCellExperiment object.")
   }
 
-  pathways.hallmark <- fgsea::gmtPathways(gmtPathway)
+  suppressWarnings(pathways.hallmark <- fgsea::gmtPathways(gmtPathway))
   filt_sce <- sce[,rownames(as.matrix(clusters))]
   filt_sce <- scuttle::logNormCounts(filt_sce)
   
   fms <- scran::findMarkers(filt_sce, groups = clusters)
-  logFCs <- lapply(fms,
+  suppressWarnings(logFCs <- lapply(fms,
                    function(fm){
                      print(fm)
                      logfc <- fm[[5]]
                      names(logfc) <- rownames(fm)
                      logfc
-                   })
+                   }))
   
-  mapped_logFCs <- lapply(logFCs, function(logfc){
-    ens2symbol <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db,
+  mapped_logFCs <- suppressWarnings(lapply(logFCs, function(logfc){
+    ens2symbol <- suppressWarnings(AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db,
                                         key=names(logfc),
                                         columns="SYMBOL",
-                                        keytype="ENSEMBL")
+                                        keytype="ENSEMBL"))
     ens2symbol <- tibble::as_tibble(ens2symbol)
     res <- dplyr::inner_join(tibble::as_tibble(logfc, rownames="row"), ens2symbol, by=c("row"="ENSEMBL"))
     res2 <- res %>%
@@ -79,14 +82,14 @@ geneSetEval <- function(sce, clusters, gmtPathway){
       dplyr::group_by("SYMBOL")
     ranks <- tibble::deframe(res2)
     ranks
-  })
+  }))
   
-  gseas <- lapply(mapped_logFCs, function(mapped_logfc){
+  suppressWarnings(gseas <- lapply(mapped_logFCs, function(mapped_logfc){
     fgseaRes <- fgsea::fgsea(mapped_logfc, pathways = pathways.hallmark)
     fgseaResTidy <- fgseaRes %>%
       tibble::as_tibble() %>%
       dplyr::arrange(dplyr::desc(NES))
     #mean(abs(fgseaResTidy$ES))
-  })
+  }))
   return(gseas)
 }
