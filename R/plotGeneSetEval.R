@@ -24,7 +24,7 @@ library(ggplot2)
 
 plotGeneSetEval <- function(gseas){
   plots <- c()
-  library(ggplot2)
+  suppressPackageStartupMessages(require(ggplot2))
   for(i in 1:length(gseas)){
     gseas[[i]]$pathway <- gsub("HALLMARK_", "", gseas[[i]]$pathway)
     p <- ggplot2::ggplot(gseas[[i]], aes(reorder(pathway, NES), NES)) +
@@ -37,6 +37,6 @@ plotGeneSetEval <- function(gseas){
   }
   n <- length(plots)
   nCol <- floor(sqrt(n))
-  require(gridExtra)
+  suppressPackageStartupMessages(require(gridExtra))
   do.call("grid.arrange", c(plots=plots, ncol=nCol))
 }
