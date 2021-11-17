@@ -58,14 +58,52 @@ The contributor for this package is Xin Zhi Fang.
 
 
 ## References 
-1. Germain, P. L., Sonrel, A., & Robinson, M. D. (2020). pipeComp, a general framework for the evaluation of computational pipelines, reveals performant single cell RNA-seq preprocessing tools. Genome Biology, 21(1). https://doi.org/10.1186/s13059-020-02136-7
+1. Germain, P. L., Sonrel, A., & Robinson, M. D. (2020). pipeComp, a general framework for the evaluation of computational pipelines, reveals performant single cell RNA-seq preprocessing tools. _Genome Biology_, 21(1). https://doi.org/10.1186/s13059-020-02136-7
 
-2. Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology, 15(12). https://doi.org/10.1186/s13059-014-0550-8
+2. Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. _Genome Biology_, 15(12). https://doi.org/10.1186/s13059-014-0550-8
 
-3. Amezquita, R. A., Lun, A. T. L., Becht, E., Carey, V. J., Carpp, L. N., Geistlinger, L., Marini, F., Rue-Albrecht, K., Risso, D., Soneson, C., Waldron, L., Pagès, H., Smith, M. L., Huber, W., Morgan, M., Gottardo, R., & Hicks, S. C. (2019). Orchestrating single-cell analysis with Bioconductor. Nature Methods, 17(2), 137–145. https://doi.org/10.1038/s41592-019-0654-x
+3. Amezquita, R. A., Lun, A. T. L., Becht, E., Carey, V. J., Carpp, L. N., Geistlinger, L., Marini, F., Rue-Albrecht, K., Risso, D., Soneson, C., Waldron, L., Pagès, H., Smith, M. L., Huber, W., Morgan, M., Gottardo, R., & Hicks, S. C. (2019). Orchestrating single-cell analysis with Bioconductor. _Nature Methods_, 17(2), 137–145. https://doi.org/10.1038/s41592-019-0654-x
 
 4. Korotkevich, G., Sukhov, V., Budin, N., Shpak, B., Artyomov, M. N., & Sergushichev, A. (2016). Fast gene set enrichment analysis. BioRxiv. Published. https://doi.org/10.1101/060012
 
+5. McCarthy DJ, Campbell KR, Lun ATL, Willis QF (2017). “Scater: pre-processing, quality control, normalisation and
+visualisation of single-cell RNA-seq data in R.” _Bioinformatics_, *33*, 1179-1186. doi: 10.1093/bioinformatics/btw777
+(URL: https://doi.org/10.1093/bioinformatics/btw777).
+
+6. Joseph Larmarange (2021). labelled: Manipulating Labelled Data. R package version 2.9.0.
+  https://CRAN.R-project.org/package=labelled
+  
+7. Lun ATL, McCarthy DJ, Marioni JC (2016). “A step-by-step workflow for low-level analysis of single-cell RNA-seq data with
+Bioconductor.” _F1000Res._, *5*, 2122. doi: 10.12688/f1000research.9501.2 (URL:
+https://doi.org/10.12688/f1000research.9501.2).
+
+8. Hervé Pagès, Marc Carlson, Seth Falcon and Nianhua Li (2020). AnnotationDbi: Manipulation of SQLite-based annotations
+  in Bioconductor. R package version 1.52.0. https://bioconductor.org/packages/AnnotationDbi
+
+9. Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
+  https://doi.org/10.21105/joss.01686
+  
+10. Guy Brock, Vasyl Pihur, Susmita Datta, Somnath Datta (2008). clValid: An R Package for Cluster Validation. Journal of
+  Statistical Software, 25(4), 1-22. URL https://www.jstatsoft.org/v25/i04/
+  
+11. Hao and Hao et al. Integrated analysis of multimodal single-cell data. _Cell_ (2021)
+
+12. Maechler, M., Rousseeuw, P., Struyf, A., Hubert, M., Hornik, K.(2021).  cluster: Cluster Analysis Basics and
+  Extensions. R package version 2.1.2.
+  
+13. Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R
+  package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+  
+14. Kirill Müller and Hadley Wickham (2021). tibble: Simple Data Frames. R package version 3.1.6.
+  https://CRAN.R-project.org/package=tibble
+  
+15. H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+16. Stefan Milton Bache and Hadley Wickham (2020). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1.
+  https://CRAN.R-project.org/package=magrittr
+
+17. Baptiste Auguie (2017). gridExtra: Miscellaneous Functions for "Grid" Graphics. R package version 2.3.
+  https://CRAN.R-project.org/package=gridExtra
 
 ## Acknowledgements
 
