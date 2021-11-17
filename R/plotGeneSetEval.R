@@ -37,5 +37,6 @@ plotGeneSetEval <- function(gseas){
   }
   n <- length(plots)
   nCol <- floor(sqrt(n))
+  require(gridExtra)
   do.call("grid.arrange", c(plots=plots, ncol=nCol))
 }
