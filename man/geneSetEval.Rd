@@ -30,4 +30,5 @@ GMTPath <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREva
 geneSetRes <- geneSetEval(embryo, embryoClusts[[1]], GMTPath)
 geneSetRes
 }
+
 }

@@ -20,6 +20,8 @@
 #' geneSetRes <- geneSetEval(embryo, embryoClusts[[1]], GMTPath)
 #' geneSetRes
 #' }
+#' 
+#' @import scuttle dplyr stats fgsea
 
 geneSetEval <- function(sce, clusters, gmtPathway){
   if (!file.exists(gmtPathway)){
@@ -82,3 +84,4 @@ geneSetEval <- function(sce, clusters, gmtPathway){
   }))
   return(gseas)
 }
+#[END]

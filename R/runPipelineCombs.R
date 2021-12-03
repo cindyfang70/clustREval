@@ -17,6 +17,7 @@
 #' @param resolution Character vector of clustering resolutions. Default: 0.1, 1
 #' 
 #' @return List of factors containing clustering results from each pipeline run.
+#' 
 #' @export
 #' 
 #' @details
@@ -135,3 +136,4 @@ runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none")
   clustRes <- lapply(clustRes, labelled::remove_attributes, attributes="true.labels")
   return(clustRes)
 }
+#[END]

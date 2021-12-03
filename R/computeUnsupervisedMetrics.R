@@ -50,4 +50,7 @@ computeUnsupervisedMetrics <- function(sce, clusters){
 
   metrics <- c(dunnIndex=dunnIndex, meanSilhouette=mean(silhouetteIndex[,3]))
   return(metrics)
+
 }
+
+#[END]

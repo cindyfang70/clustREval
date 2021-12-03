@@ -2,7 +2,8 @@ Package: clustREval
 Title: Evaluates Clustering
 Version: 0.0.0.9000
 Authors@R: person("X", "Fang", role = c("aut", "cre"), email="xinzhi.fang@mail.utoronto.ca")
-Description: What the package does (one paragraph).
+Maintainer: Xin Zhi Fang <xinzhi.fang@mail.utoronto.ca>
+Description: clustREval is a package that evaluates the performance of clustering workflows for single cell RNA sequencing data. Users can specify parameters for workflow steps (doublet detection, filtering, normalization, dimensionality reduction, feature selection, and clustering), and can then compute clusteirng outputs from pipelines with all possible combinations of these parameters. Then, users can evaluate the output of each pipeline using unsupervised clustering metrics (Dunn index, mean silhouette width) and gene set enrichment analysis metrics.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
