@@ -8,7 +8,7 @@
 A data frame with 26073 rows and 124 columns:
 }
 \source{
-\url https://www.ebi.ac.uk/gxa/sc/experiments/E-GEOD-36552/results/tsne
+\url{https://www.ebi.ac.uk/gxa/sc/experiments/E-GEOD-36552/results/tsne}
 }
 \usage{
 embryo

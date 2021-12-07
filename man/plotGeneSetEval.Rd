@@ -2,12 +2,12 @@
 % Please edit documentation in R/plotGeneSetEval.R
 \name{plotGeneSetEval}
 \alias{plotGeneSetEval}
-\title{plotGeneSetEval}
+\title{Plot Enrichment Scores for Each Pathway in a Cluster}
 \usage{
 plotGeneSetEval(gseas)
 }
 \arguments{
-\item{gseas}{A list containing enrichment values for each cluster computed from geneSetEval}
+\item{gseas}{A list containing enrichment values for each pathway in a cluster}
 }
 \value{
 A plot for one cluster from a clustering output showing the enriched pathways for that cluster.

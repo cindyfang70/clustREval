@@ -6,6 +6,7 @@
 #' @param clusters Factor representing clustering results for the SingleCellExperiment object.
 #'
 #' @return A list with the Dunn Index and mean Silhouette score as elements
+#' 
 #' @export
 #'
 #' @examples
@@ -16,8 +17,8 @@
 #' # Compute metrics for the first clustering output on the embryo dataset
 #' metrics <- computeUnsupervisedMetrics(embryo, embryoClusts[[1]])
 #' }
-
 #' 
+#' @import cluster SingleCellExperiment Seurat clValid scuttle utils
 computeUnsupervisedMetrics <- function(sce, clusters){
   
   if(class(sce)[[1]] != "SingleCellExperiment"){

@@ -2,7 +2,7 @@
 % Please edit documentation in R/geneSetEval.R
 \name{geneSetEval}
 \alias{geneSetEval}
-\title{geneSetEval}
+\title{Gene Set Enrichment Analysis for Clusters from scRNA-seq Data.}
 \usage{
 geneSetEval(sce, clusters, gmtPathway)
 }

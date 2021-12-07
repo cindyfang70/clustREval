@@ -47,6 +47,9 @@
 #' res <- runPipelineCombs(sce=embryo, outputPrefix="embryo", filt=filtMethods)
 #' res
 #' }
+#' 
+#' 
+#' @import pipeComp SingleCellExperiment scuttle labelled
 
 runPipelineCombs <- function(sce, outputPrefix = "sce", doubletmethod =c("none"), filt=c("filt.default"), norm=c("norm.seurat"), sel=c("sel.vst"), selnb=2000, dr=c("seurat.pca"), clustmethod=c("clust.seurat"), dims=c(10), resolution=c(0.1, 1)){
   if(class(sce)[[1]] != "SingleCellExperiment"){

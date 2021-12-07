@@ -1,4 +1,4 @@
-#' geneSetEval
+#' Gene Set Enrichment Analysis for Clusters from scRNA-seq Data.
 #' 
 #' A function that uses MSigDB Hallmark Pathways to compute gene set enrichment analysis for each clustering output 
 #' given in clusters.
@@ -8,6 +8,7 @@
 #' @param gmtPathway File path pointing to a .gmt file for gene set analysis.
 #'
 #' @return Tibble containing gene set enrichment results for all clusters.
+#' 
 #' @export
 #'
 #' @examples
@@ -21,7 +22,7 @@
 #' geneSetRes
 #' }
 #' 
-#' @import scuttle dplyr stats fgsea
+#' @import scuttle dplyr stats fgsea scran tibble AnnotationDbi org.Hs.eg.db
 
 geneSetEval <- function(sce, clusters, gmtPathway){
   if (!file.exists(gmtPathway)){

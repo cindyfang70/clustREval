@@ -6,6 +6,7 @@
 #' @param gseas A list containing enrichment values for each pathway in a cluster
 #'
 #' @return A plot for one cluster from a clustering output showing the enriched pathways for that cluster.
+#' 
 #' @export
 #'
 #' @examples
