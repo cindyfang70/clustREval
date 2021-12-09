@@ -17,4 +17,7 @@ embryo
 Gene expression of 124 early embryo and embryonic stem cells from scRNA-seq. Sourced from the
 EMBL-EBI Single Cell Expression Atlas.
 }
+\details{
+Yan L, Yang M, Guo H, et al. Single-cell RNA-Seq profiling of human preimplantation embryos and embryonic stem cells. Nature Structural & Molecular Biology. 2013 Sep;20(9):1131-1139. DOI: 10.1038/nsmb.2660. PMID: 23934149.
+}
 \keyword{datasets}

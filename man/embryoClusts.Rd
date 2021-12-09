@@ -11,6 +11,7 @@ A list with two levels
 embryoClusts
 }
 \description{
-Embryo data clustering results from two pipelines.
+Clustering results of the embryo scRNA-seq data from two pipelines. Pipelines computed are the default pipeline settings from runPipelineCombs.
+Structured as a list with two entries, each entry is a factor that indicates the cluster that each of the cells in the embryo datasets belong to.
 }
 \keyword{datasets}
