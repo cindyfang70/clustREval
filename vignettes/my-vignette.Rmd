@@ -53,3 +53,9 @@ gsea1 <- geneSetEval(embryo, embryoClusts[[1]], GMTPathway)
 gsea2 <- geneSetEval(embryo, embryoClusts[[2]], GMTPathway)
 plotGeneSetEval(gsea1[[1]])
 ```
+
+Session Info:
+```{r}
+sessionInfo()
+```
+
