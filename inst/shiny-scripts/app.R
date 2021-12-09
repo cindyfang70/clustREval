@@ -56,7 +56,7 @@ ui <- fluidPage(
                                   br(), br(),
                                   uiOutput("metricsControls"),
                                   actionButton("computeMetrics", "Compute Metrics", class="btn-success"),
-                                  tableOutput("metrics"))%>% withSpinner(color="#0dc5c1")
+                                  tableOutput("metrics"))
                                   )
                          )
 
@@ -67,6 +67,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   gseaRes <- reactive({
       req(input$sce)
+      req(input$runGsea)
       clusts <- runPipelineCombs(sce=readRDS(input$sce$datapath), outputPrefix=input$outputPrefix, filt=input$filt, norm=input$norm, sel=input$sel, selnb=input$selnb, dr=input$pca, dims=as.double(input$ndim), res=as.double(input$res))
       GMTPath <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREval")
       gseas <- c()
