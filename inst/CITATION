@@ -1,0 +1,13 @@
+citHeader("To cite clustREval in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "clustREval: An R Package for evaluating different scRNA-seq clustering pipelines",
+  author   = "Xin Zhi Fang",
+  note     = "Unpublished",
+  year     = "2021",
+  textVersion = paste(
+"Fang, X. (2021) clustREval: An R Package for evaluating different scRNA-seq clustering pipelines. Unpublished. URL https://github.com/cindyfang70/clustREval"
+  )
+
+)

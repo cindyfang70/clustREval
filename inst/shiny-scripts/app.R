@@ -1,4 +1,5 @@
 library(shiny)
+library(shinycssloaders)
 options(shiny.maxRequestSize=300*1024^2) 
 ui <- fluidPage(
     mainPanel(
@@ -9,7 +10,7 @@ ui <- fluidPage(
                       column(4, 
                             "Please specify your pipeline parameters and run the pipelines on the next tab.",
                             br(), br(),
-                            fileInput("sce", "Upload SingleCellExperiment Object"),
+                            fileInput("sce", "Upload SingleCellExperiment Object as RDS file"),
                             textInput("outputPrefix", "Prefix for output file path")
                       ),
                       column(4,
@@ -41,9 +42,9 @@ ui <- fluidPage(
                          br(),
                          tableOutput("pipelinesRun"),
                          uiOutput("pipelineControls"),
-                         uiOutput("gseaControls"),
+                         withSpinner(uiOutput(outputId = "gseaControls")),
                          actionButton("runGsea", "Run Pipelines and Plot Enrichment Results", class="btn-success"),
-                         plotOutput("clusts")
+                         plotOutput("clusts") %>% withSpinner(color="#0dc5c1")
                         )
                 
                          )
@@ -55,7 +56,7 @@ ui <- fluidPage(
                                   br(), br(),
                                   uiOutput("metricsControls"),
                                   actionButton("computeMetrics", "Compute Metrics", class="btn-success"),
-                                  tableOutput("metrics"))
+                                  tableOutput("metrics"))%>% withSpinner(color="#0dc5c1")
                                   )
                          )
 
@@ -94,6 +95,7 @@ server <- function(input, output, session) {
     selectInput("npipeline", "Choose Pipeline", choices=pipelines)
   })
   output$gseaControls <- renderUI({
+    req(input$runGsea)
     gseas <- gseaRes()
     req(input$npipeline)
     print(gseas[[as.numeric(input$npipeline)]])
