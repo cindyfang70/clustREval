@@ -4,10 +4,12 @@
 \alias{plotGeneSetEval}
 \title{Plot Enrichment Scores for Each Pathway in a Cluster}
 \usage{
-plotGeneSetEval(gseas)
+plotGeneSetEval(gseas, clustname = "")
 }
 \arguments{
 \item{gseas}{A list containing enrichment values for each pathway in a cluster}
+
+\item{clustname}{A string or integer containing the name of the cluster. Used in the title of the plot.}
 }
 \value{
 A plot for one cluster from a clustering output showing the enriched pathways for that cluster.

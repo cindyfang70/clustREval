@@ -40,8 +40,9 @@ library("clustREval")
 
 ``` r
 ls("package:clustREval")
-data(package = "clustREval") # optional
+data(package = "clustREval")
 ```
+To run the shiny app, run: ```runClustREval()```
 ``` r
 browseVignettes("clustREval")
 ```

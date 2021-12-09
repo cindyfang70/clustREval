@@ -14,10 +14,10 @@ ui <- fluidPage(
                       ),
                       column(4,
                             "Pipeline Parameters",
-                            selectInput("filt", label = "Filtering Method", choices = c("filt.default", "filt.lenient", "filt.mad", "filt.pca", "filt.pca2", "filt.stringent", "none"), multiple=TRUE),
+                            selectInput("filt", label = "Filtering Method", choices = c("filt.default", "filt.lenient", "filt.stringent", "none"), multiple=TRUE),
                             selectInput("norm", label = "Normalization Method", choices =  c("norm.scran",
                                                                                                    "norm.sctransform", "norm.seurat"), multiple=TRUE),
-                            selectInput("sel", label = "Feature Selection Method", choices =  c("sel.fromField", "sel.vst")),
+                            selectInput("sel", label = "Feature Selection Method", choices =  c("sel.vst")),
                             numericInput("selnb", "Number of Features to Select", value = 2000, min = 500, max = 10000),
                             selectInput("pca", label = "Dimensionality Reduction Method", choices =  c("seurat.pca", "seurat.pca.noweight")),
                             selectInput("ndim", "Number of Dimensions for Dimensionality Reduction", choices=c(5, 10, 15, 20, 25), multiple=TRUE),
@@ -109,7 +109,7 @@ server <- function(input, output, session) {
     gseas <- gseaRes()
     print(gseas[[as.numeric(input$npipeline)]])
     print(gseas[[as.numeric(input$npipeline)]][[input$nclusts]])
-    plotGeneSetEval(gseas[[as.numeric(input$npipeline)]][[input$nclusts]])
+    plotGeneSetEval(gseas[[as.numeric(input$npipeline)]][[input$nclusts]], clustname=input$nclusts)
   })
   output$metricsControls <- renderUI({
     gseas <- gseaRes()

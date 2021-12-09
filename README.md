@@ -40,8 +40,10 @@ library("clustREval")
 
 ``` r
 ls("package:clustREval")
-data(package = "clustREval") # optional
+data(package = "clustREval")
 ```
+
+To run the shiny app, run: `runClustREval()`
 
 ``` r
 browseVignettes("clustREval")
@@ -66,6 +68,10 @@ The `plotGeneSetEval` function plots the enrichment scores from GSEA.
 
 An overview of the package is illustrated below:
 ![](./inst/extdata/files.png)
+
+An example of the plotting functionality:
+
+![](./inst/extdata/plot.png)
 
 ## Contributions
 
