@@ -42,7 +42,7 @@ ui <- fluidPage(
                          br(),
                          tableOutput("pipelinesRun"),
                          uiOutput("pipelineControls"),
-                         withSpinner(uiOutput(outputId = "gseaControls"), color="0d5c1"),
+                         withSpinner(uiOutput(outputId = "gseaControls"), color="#0d5c1"),
                          actionButton("runGsea", "Run Pipelines and Plot Enrichment Results", class="btn-success"),
                          plotOutput("clusts") %>% withSpinner(color="#0dc5c1")
                         ))
