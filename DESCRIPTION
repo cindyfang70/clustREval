@@ -33,7 +33,6 @@ Imports:
   magrittr,
   shiny
 Depends:
-    R (>= 2.10),
-    gridExtra
+    R (>= 2.10)
 LazyData: true
 VignetteBuilder: knitr
