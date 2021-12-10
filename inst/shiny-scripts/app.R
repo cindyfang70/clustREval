@@ -2,36 +2,36 @@ library(shiny)
 library(shinycssloaders)
 options(shiny.maxRequestSize=300*1024^2) 
 ui <- fluidPage(
+    sidebarLayout(
+      sidebarPanel(fluidRow(
+        column(6, 
+               "Please upload your data and select your pipeline parameters. At least one parameter must have more than one option selected.",
+               br(), br(),
+               fileInput("sce", "Upload SingleCellExperiment Object as RDS file"),
+               textInput("outputPrefix", "Prefix for output file path"),
+               "Experiment Summary",
+               tableOutput("sceSummary")
+        ),
+        column(6,
+               "Pipeline Parameters",
+               selectInput("filt", label = "Filtering Method", choices = c("filt.default", "filt.lenient", "filt.stringent", "none"), multiple=TRUE),
+               selectInput("norm", label = "Normalization Method", choices =  c("norm.scran",
+                                                                                "norm.sctransform", "norm.seurat"), multiple=TRUE),
+               selectInput("sel", label = "Feature Selection Method", choices =  c("sel.vst")),
+               numericInput("selnb", "Number of Features to Select", value = 2000, min = 500, max = 10000),
+               selectInput("pca", label = "Dimensionality Reduction Method", choices =  c("seurat.pca")),
+               selectInput("ndim", "Number of Dimensions for Dimensionality Reduction", choices=c(5, 10, 15, 20, 25), multiple=TRUE),
+               selectInput("res", "Clustering Resolution", choices=c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2), multiple=TRUE),
+               #actionButton("runPipeline", "Run Pipelines", class = "btn-success")
+        ),
+      )
+        
+      ),
+    
     mainPanel(
       # Output: Tabset w/ plot, summary, and table ----
       tabsetPanel(type = "tabs",
-            tabPanel("Specify Pipeline Parameters",
-                    fluidRow(
-                      column(4, 
-                            "Please specify your pipeline parameters and run the pipelines on the next tab.",
-                            br(), br(),
-                            fileInput("sce", "Upload SingleCellExperiment Object as RDS file"),
-                            textInput("outputPrefix", "Prefix for output file path")
-                      ),
-                      column(4,
-                            "Pipeline Parameters",
-                            selectInput("filt", label = "Filtering Method", choices = c("filt.default", "filt.lenient", "filt.stringent", "none"), multiple=TRUE),
-                            selectInput("norm", label = "Normalization Method", choices =  c("norm.scran",
-                                                                                                   "norm.sctransform", "norm.seurat"), multiple=TRUE),
-                            selectInput("sel", label = "Feature Selection Method", choices =  c("sel.vst")),
-                            numericInput("selnb", "Number of Features to Select", value = 2000, min = 500, max = 10000),
-                            selectInput("pca", label = "Dimensionality Reduction Method", choices =  c("seurat.pca", "seurat.pca.noweight")),
-                            selectInput("ndim", "Number of Dimensions for Dimensionality Reduction", choices=c(5, 10, 15, 20, 25), multiple=TRUE),
-                            selectInput("res", "Clustering Resolution", choices=c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2), multiple=TRUE),
-                            #actionButton("runPipeline", "Run Pipelines", class = "btn-success")
-                                    ),
-                           column(4,
-                                  "Experiment Summary",
-                                  tableOutput("sceSummary")
-                                  )
-                         )
-                         ),
-                tabPanel("Run Pipeline and Plot GSEA",
+                        tabPanel("Run Pipeline and Plot GSEA",
                          fluidRow(
                            column(12,
                          "Gene Set Enrichment Analysis using MSigDB Hallmark Pathways",
@@ -42,13 +42,12 @@ ui <- fluidPage(
                          br(),
                          tableOutput("pipelinesRun"),
                          uiOutput("pipelineControls"),
-                         withSpinner(uiOutput(outputId = "gseaControls")),
+                         withSpinner(uiOutput(outputId = "gseaControls"), color="0d5c1"),
                          actionButton("runGsea", "Run Pipelines and Plot Enrichment Results", class="btn-success"),
                          plotOutput("clusts") %>% withSpinner(color="#0dc5c1")
-                        )
-                
-                         )
-                  ),
+                        ))
+                ),
+                  
                 tabPanel("Unsupervised Clustering Metrics", 
                          fluidRow(
                            column(8,
@@ -56,12 +55,12 @@ ui <- fluidPage(
                                   br(), br(),
                                   uiOutput("metricsControls"),
                                   actionButton("computeMetrics", "Compute Metrics", class="btn-success"),
-                                  tableOutput("metrics"))
-                                  )
-                         )
+                                  br(),
+                                  tableOutput("metrics")%>% withSpinner(color="#0dc5c1")
+                                  ))
+                         ))
 
-      )
-))
+)))
 
 
 server <- function(input, output, session) {
@@ -79,11 +78,13 @@ server <- function(input, output, session) {
       })
   clustRes <- reactive({
     req(input$sce)
+    req(input$runGsea)
     clusts <- runPipelineCombs(sce=readRDS(input$sce$datapath), outputPrefix=input$outputPrefix, filt=input$filt, norm=input$norm, sel=input$sel, selnb=input$selnb, dr=input$pca, dims=as.double(input$ndim), res=as.double(input$res))
     clusts
   })
   output$pipelinesRun <- renderTable({
     req(input$sce)
+    req(input$runGsea)
     clusts <- clustRes()
     pips <- pipeComp::parsePipNames(names(clusts))
     rownames(pips) <- seq(1:nrow(pips))

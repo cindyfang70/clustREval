@@ -24,7 +24,10 @@ order to visualize biological differences between clusters.
 data(embryo)
 data(embryoClusts)
 # Compute pathways for the first clustering output
-geneSetRes <- geneSetEval(embryo, embryoClusts[[1]])
+data(embryo)
+data(embryoClusts)
+GMTPath <- system.file("extdata", "h.all.v7.4.symbols.gmt", package = "clustREval")
+geneSetRes <- geneSetEval(embryo, embryoClusts[[1]], GMTPath)
 plotGeneSetEval(geneSetRes[[1]])
 }
 
